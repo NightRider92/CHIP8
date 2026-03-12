@@ -41,7 +41,7 @@ namespace CHIP8.Graphics
                             y * Constants.SCREEN_SCALE,
                             Constants.SCREEN_SCALE,
                             Constants.SCREEN_SCALE,
-                            Color.White
+                            Color.Green
                         );
                     }
                 }

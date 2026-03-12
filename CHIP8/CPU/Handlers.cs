@@ -75,7 +75,7 @@ namespace CHIP8.CPU
             registers.reg_PC = (ushort)nnn;
         }
 
-        // 2NNN
+        // 2NNN (calls 12 bit address - NNN)
         public void instruct_call_addr(ushort opcode)
         {
             int nnn = (opcode & 0x0FFF);
