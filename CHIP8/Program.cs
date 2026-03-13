@@ -20,7 +20,7 @@ while (true)
         stopwatchCPU.Restart();
     }
 
-    if (stopwatchCPU.Elapsed.TotalMilliseconds > 16.67f) // ~ 60Hz
+    if (stopwatchTimers.Elapsed.TotalMilliseconds > 16.67f) // ~ 60Hz
     {
         system.ProcessTimers();
         stopwatchTimers.Restart();
