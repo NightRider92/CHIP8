@@ -1,4 +1,4 @@
-﻿using Raylib_cs;
+using Raylib_cs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +14,7 @@ namespace CHIP8.Graphics
         {
             Console.WriteLine("Display has been initialized");
             Raylib.InitWindow(Constants.SCREEN_W * Constants.SCREEN_SCALE, Constants.SCREEN_H * Constants.SCREEN_SCALE, "CHIP8");
-            Raylib.SetTargetFPS(1000); 
+            Raylib.SetTargetFPS(Constants.GRAPHICS_FPS); 
         }
 
         /// <summary>
