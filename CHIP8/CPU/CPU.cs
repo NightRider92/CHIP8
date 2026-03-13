@@ -148,8 +148,8 @@ namespace CHIP8.CPU
         /// </summary>
         public void ProcessTimers()
         {
-            this.timers!.DT--;
-            this.timers!.ST--;
+           if (timers!.DT > 0) timers.DT--;
+           if (timers!.ST > 0) timers.ST--;
         }
     }
 }
