@@ -14,7 +14,7 @@ namespace CHIP8.Graphics
         {
             Console.WriteLine("Display has been initialized");
             Raylib.InitWindow(Constants.SCREEN_W * Constants.SCREEN_SCALE, Constants.SCREEN_H * Constants.SCREEN_SCALE, "CHIP8");
-            Raylib.SetTargetFPS(Constants.GRAPHICS_FPS); 
+            Raylib.SetTargetFPS(Constants.GRAPHICS_FPS);
         }
 
         /// <summary>
@@ -30,12 +30,21 @@ namespace CHIP8.Graphics
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Color.Black);
 
+            int shaderOffsetX = 2;
             for (int y = 0; y < Constants.SCREEN_H; y++)
             {
                 for (int x = 0; x < Constants.SCREEN_W; x++)
                 {
                     if (videoBuffer[y * Constants.SCREEN_W + x] == 1)
                     {
+                       // Shader
+                       Raylib.DrawRectangle(
+                            (x * Constants.SCREEN_SCALE) + shaderOffsetX,
+                            (y * Constants.SCREEN_SCALE) + shaderOffsetX,
+                            Constants.SCREEN_SCALE,
+                            Constants.SCREEN_SCALE,
+                            Color.DarkGreen);
+
                         Raylib.DrawRectangle(
                             x * Constants.SCREEN_SCALE,
                             y * Constants.SCREEN_SCALE,
