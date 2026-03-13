@@ -4,10 +4,10 @@ using CHIP8.CPU;
 using System.Diagnostics;
 
 Stopwatch stopwatch = new Stopwatch();
-stopwatch.Start();
 
 double cpuAccumulator = 0;
-double timersAccumulator = 0;  
+double timersAccumulator = 0;
+double displayAccumulator = 0;
 
 Core system = new Core("outlaw.ch8");
 Console.Clear();
@@ -19,16 +19,25 @@ while (true)
 
     cpuAccumulator += elapsed;
     timersAccumulator += elapsed;
+    displayAccumulator+= elapsed;   
 
-    if (cpuAccumulator >= Constants.CPU_TIMING_MS)      // ~ 1000Hz
+    while (cpuAccumulator >= Constants.CPU_TIMING_MS)     
     {
         system.Process();
         cpuAccumulator -= Constants.CPU_TIMING_MS;
     }
 
-    if (timersAccumulator >= Constants.TIMER_TIMING_MS) // ~ 60Hz
+    while (timersAccumulator >= Constants.TIMER_TIMING_MS) 
     {
         system.ProcessTimers();
-        timersAccumulator-= Constants.TIMER_TIMING_MS;    
+        timersAccumulator -= Constants.TIMER_TIMING_MS;
     }
+
+    while (displayAccumulator >= Constants.DISPLAY_TIMING_MS)
+    {
+        system.ProcessDisplay();
+        displayAccumulator -= Constants.DISPLAY_TIMING_MS;
+    }
+
+    Thread.Sleep(0); // Yield to other threads (e.g. input handling)
 }
