@@ -119,8 +119,6 @@ namespace CHIP8
 
             this.cpu!.Process();
             this.captureKeyboardKeys();
-            byte[] buffer = (byte[])this.videoMemory!.GetClone()!;
-            this.display!.Draw(buffer);
         }
 
         /// <summary>
@@ -129,6 +127,15 @@ namespace CHIP8
         public void ProcessTimers()
         {
             this.cpu!.ProcessTimers();
+        }
+
+        /// <summary>
+        /// Process display
+        /// </summary>
+        public void ProcessDisplay()
+        {
+            byte[] buffer = (byte[])this.videoMemory!.GetClone()!;
+            this.display!.Draw(buffer);
         }
     }
 }
