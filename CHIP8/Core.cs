@@ -1,4 +1,4 @@
-﻿using CHIP8.CPU;
+using CHIP8.CPU;
 using CHIP8.Graphics;
 using CHIP8.Input;
 using CHIP8.Memory;
@@ -114,13 +114,21 @@ namespace CHIP8
             Console.WriteLine("REG_PC: " + this.registers!.reg_PC);
             Console.WriteLine("REG_SP: " + this.registers!.reg_SP);
             Console.WriteLine("REG_I: " + this.registers!.reg_I);
-            Console.WriteLine("REG_V: " + string.Join(", ", this.registers!.reg_V)); 
+            Console.WriteLine("REG_V: " + string.Join(", ", this.registers!.reg_V));
             Console.WriteLine("STACK: " + string.Join(", ", this.registers!.stack));
 
             this.cpu!.Process();
             this.captureKeyboardKeys();
             byte[] buffer = (byte[])this.videoMemory!.GetClone()!;
             this.display!.Draw(buffer);
+        }
+
+        /// <summary>
+        /// Process timers
+        /// </summary>
+        public void ProcessTimers()
+        {
+            this.cpu!.ProcessTimers();
         }
     }
 }
