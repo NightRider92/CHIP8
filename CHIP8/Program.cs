@@ -10,7 +10,7 @@ double cpuAccumulator = 0;
 double timersAccumulator = 0;
 double displayAccumulator = 0;
 
-Core system = new Core("outlaw.ch8");
+Core system = new Core("outlaw.ch8"); // Load game ROM
 Console.Clear();
 
 while (true)
@@ -24,7 +24,7 @@ while (true)
 
     while (cpuAccumulator >= Constants.CPU_TIMING_MS)
     {
-        system.Process();
+        system.ProcessCPU();
         cpuAccumulator -= Constants.CPU_TIMING_MS;
     }
 
