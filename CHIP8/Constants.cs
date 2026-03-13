@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,6 +16,9 @@ namespace CHIP8
         public const short SCREEN_W = 64;
         public const short SCREEN_H = 32;
 		public const short SCREEN_SCALE = 10;
+
+		public const double CPU_TIMING_MS = 1.0f;      // ~ 1000Hz
+		public const double TIMER_TIMING_MS = 16.67f;  // ~ 60Hz
 
         public static readonly byte[] fontset = new byte[Constants.FONTSET_SIZE] 
 		{
