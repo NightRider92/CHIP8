@@ -1,7 +1,7 @@
 **CHIP‑8 Emulator (C# • Raylib‑cs)**
 
-A clean, fully‑from‑scratch CHIP‑8 emulator written in C#, using raylib‑cs for graphics, input, and window management.
-The project is structured for readability and modularity, with separate components for CPU, memory, input, graphics, timers, and ROM loading.
+A clean, fully‑from‑scratch CHIP‑8 emulator written in C#, using raylib‑cs for graphics, input and window management.
+The project is structured for readability and modularity, with separate components for CPU, memory, input, graphics, timers and ROM loading.
 
 This emulator aims to stay faithful to the original 1977 COSMAC VIP interpretation of CHIP‑8 while adding a few modern touches—like a subtle pixel‑shading effect 
 to give the display a more “phosphor‑glow” feel.
@@ -16,7 +16,7 @@ to give the display a more “phosphor‑glow” feel.
 
 **About CHIP‑8 (1977)**
 CHIP‑8 isn’t actually a hardware system—it’s an interpreted virtual machine created in the late 1970s for hobbyist computers like the COSMAC VIP (1977).
-It was designed to make game programming accessible, with simple opcodes, a 64×32 monochrome display, and a hex‑based keypad.
+It was designed to make game programming accessible, with simple opcodes, a 64×32 monochrome display and a hex‑based keypad.
 
 **Despite its age, CHIP‑8 remains a favorite for emulator developers because:**
 - The architecture is tiny and elegant
@@ -29,15 +29,3 @@ It was designed to make game programming accessible, with simple opcodes, a 64×
 - A dark green offset pixel (shadow)
 - The main bright green pixel
 - This creates a subtle depth effect reminiscent of old CRT glow.
-
-**Project Structure**
- ├── CPU/
- ├── Graphics/
- ├── Input/
- ├── Memory/
- ├── Registers/
- ├── ROM/
- ├── Timers/
- ├── Constants.cs
- ├── Core.cs
- └── Program.cs
