@@ -39,5 +39,5 @@ while (true)
         displayAccumulator -= Constants.DISPLAY_TIMING_MS;
     }
 
-    Thread.Sleep(0); // Yield to other threads (e.g. input handling)
+    Thread.Sleep(1); // Yield to other threads (e.g. input handling)
 }
