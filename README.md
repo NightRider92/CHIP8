@@ -1,10 +1,14 @@
 **CHIP‑8 Emulator (C# • Raylib‑cs)**
 
+<img width="810" height="620" alt="image" src="https://github.com/user-attachments/assets/f7086828-f27e-43b1-8e2f-980a00473c5b" />
+
 A clean, fully‑from‑scratch CHIP‑8 emulator written in C#, using raylib‑cs for graphics, input and window management.
 The project is structured for readability and modularity, with separate components for CPU, memory, input, graphics, timers and ROM loading.
 
 This emulator aims to stay faithful to the original 1977 COSMAC VIP interpretation of CHIP‑8 while adding a few modern touches—like a subtle pixel‑shading effect 
 to give the display a more “phosphor‑glow” feel.
+
+<img width="793" height="567" alt="image" src="https://github.com/user-attachments/assets/5f289bed-ae3b-454d-a78c-e5a3fd36b30a" />
 
 **Full CHIP‑8 instruction set implementation**
 
