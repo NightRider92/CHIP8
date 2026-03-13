@@ -14,13 +14,13 @@ Console.Clear();
 
 while (true)
 {
-    if(stopwatchCPU.Elapsed.TotalMilliseconds > 1) // ~ 1000Hz
+    if(stopwatchCPU.Elapsed.TotalMilliseconds >= 1) // ~ 1000Hz
     {
         system.Process();
         stopwatchCPU.Restart();
     }
 
-    if (stopwatchTimers.Elapsed.TotalMilliseconds > 16.67f) // ~ 60Hz
+    if (stopwatchTimers.Elapsed.TotalMilliseconds >= 16.67f) // ~ 60Hz
     {
         system.ProcessTimers();
         stopwatchTimers.Restart();
