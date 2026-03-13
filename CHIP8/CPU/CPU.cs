@@ -126,7 +126,7 @@ namespace CHIP8.CPU
         /// Process operation codes
         /// </summary>
         /// <param name="opcode"></param>
-        public void Process()
+        public void ProcessCPU()
         {
             int n = this.registers!.reg_PC;
             byte b = (byte)(this.mainMemory!.GetValue((uint)n))!;
