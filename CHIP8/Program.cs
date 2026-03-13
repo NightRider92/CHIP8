@@ -20,15 +20,15 @@ while (true)
     cpuAccumulator += elapsed;
     timersAccumulator += elapsed;
 
-    if (cpuAccumulator >= 1.0f) // ~ 1000Hz
+    if (cpuAccumulator >= Constants.CPU_TIMING_MS)      // ~ 1000Hz
     {
         system.Process();
-        cpuAccumulator -= 1;
+        cpuAccumulator -= Constants.CPU_TIMING_MS;
     }
 
-    if (timersAccumulator >= 16.67f) // ~ 60Hz
+    if (timersAccumulator >= Constants.TIMER_TIMING_MS) // ~ 60Hz
     {
         system.ProcessTimers();
-        timersAccumulator-= 16.67f;    
+        timersAccumulator-= Constants.TIMER_TIMING_MS;    
     }
 }
