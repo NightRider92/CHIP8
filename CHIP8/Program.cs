@@ -3,26 +3,32 @@ using CHIP8;
 using CHIP8.CPU;
 using System.Diagnostics;
 
-Stopwatch stopwatchCPU = new Stopwatch();
-Stopwatch stopwatchTimers = new Stopwatch();
+Stopwatch stopwatch = new Stopwatch();
+stopwatch.Start();
 
-stopwatchCPU.Start();
-stopwatchTimers.Start();    
+double cpuAccumulator = 0;
+double timersAccumulator = 0;  
 
 Core system = new Core("outlaw.ch8");
 Console.Clear();
 
 while (true)
 {
-    if(stopwatchCPU.Elapsed.TotalMilliseconds >= 1) // ~ 1000Hz
+    double elapsed = stopwatch.Elapsed.TotalMilliseconds;
+    stopwatch.Restart();
+
+    cpuAccumulator += elapsed;
+    timersAccumulator += elapsed;
+
+    if (cpuAccumulator >= 1.0f) // ~ 1000Hz
     {
         system.Process();
-        stopwatchCPU.Restart();
+        cpuAccumulator -= 1;
     }
 
-    if (stopwatchTimers.Elapsed.TotalMilliseconds >= 16.67f) // ~ 60Hz
+    if (timersAccumulator >= 16.67f) // ~ 60Hz
     {
         system.ProcessTimers();
-        stopwatchTimers.Restart();
+        timersAccumulator-= 16.67f;    
     }
 }
