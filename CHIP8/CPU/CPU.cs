@@ -1,4 +1,4 @@
-﻿using CHIP8.Input;
+using CHIP8.Input;
 using CHIP8.Memory;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,6 @@ namespace CHIP8.CPU
         // Instructions and handlers
         private readonly Keyboard? keyboard = null;
 
-        private readonly Stopwatch? stopwatch = null;
         private readonly Registers.Registers? registers = null;
         private readonly Timers.Timers? timers = null;
 
@@ -29,7 +28,7 @@ namespace CHIP8.CPU
         {
             this.mainMemory = mMem;
             if (this.mainMemory == null)
-                throw new ArgumentNullException(nameof(this.mainMemory)); 
+                throw new ArgumentNullException(nameof(this.mainMemory));
 
             this.videoMemory = vMem;
             if (this.videoMemory == null)
@@ -46,9 +45,6 @@ namespace CHIP8.CPU
             this.keyboard = keyboard;
             if (this.keyboard == null)
                 throw new ArgumentNullException(nameof(this.keyboard));
-
-            // Stopwatch
-            this.stopwatch = new Stopwatch();   
 
             // Initialize instruction handlers
             this.handlers = new Handlers(this.mainMemory, this.videoMemory, this.registers, this.timers, this.keyboard);
@@ -134,7 +130,7 @@ namespace CHIP8.CPU
         {
             int n = this.registers!.reg_PC;
             byte b = (byte)(this.mainMemory!.GetValue((uint)n))!;
-            byte b1 = (byte)(this.mainMemory!.GetValue((uint)(n+1)))!;
+            byte b1 = (byte)(this.mainMemory!.GetValue((uint)(n + 1)))!;
 
             ushort opcode = (ushort)((b << 8) | b1);
             foreach (var i in this.instructions)
@@ -145,14 +141,15 @@ namespace CHIP8.CPU
                     break;
                 }
             }
+        }
 
-            // Decrease timers value (run timer at 60 Hz)
-            if(this.stopwatch!.ElapsedMilliseconds >= 16)
-            {
-                this.timers!.DT--;
-                this.timers!.ST--;
-                this.stopwatch.Restart();
-            }
+        /// <summary>
+        /// Process timers
+        /// </summary>
+        public void ProcessTimers()
+        {
+            this.timers!.DT--;
+            this.timers!.ST--;
         }
     }
 }
