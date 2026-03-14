@@ -48,7 +48,7 @@ namespace CHIP8.Graphics
                              (y * Constants.SCREEN_SCALE) + shaderOffsetX,
                              Constants.SCREEN_SCALE,
                              Constants.SCREEN_SCALE,
-                             Color.DarkGreen);
+                             Color.FromHSV(165, 0.55f, 0.45f)); // Darker cyan
 
                         // Draw pixel
                         Raylib.DrawRectangle(
@@ -56,7 +56,7 @@ namespace CHIP8.Graphics
                              y * Constants.SCREEN_SCALE,
                              Constants.SCREEN_SCALE,
                              Constants.SCREEN_SCALE,
-                             Color.Green
+                             Color.FromHSV(165, 0.70f, 0.90f) // Soft cyan
                         );
                     }
                 }
