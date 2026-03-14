@@ -14,14 +14,14 @@ namespace CHIP8.Memory
         {
             Console.WriteLine("Video memory has been initialized");
         }
-        protected override byte[] Buffer { get; set; } = new byte[64 * 32]; 
+        protected override byte[] Buffer { get; set; } = new byte[Constants.SCREEN_W * Constants.SCREEN_H];
 
         /// <summary>
         /// Clear video memory
         /// </summary>
         public void Clear()
         {
-            Array.Clear(Buffer, 0, Buffer.Length);
+            Array.Clear(this.Buffer, 0, this.Buffer.Length);
         }
     }
 }

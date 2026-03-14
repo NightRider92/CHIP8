@@ -14,6 +14,6 @@ namespace CHIP8.Memory
         {
             Console.WriteLine("Main memory has been initialized"); 
         }
-        protected override byte[] Buffer { get; set; } = new byte[4096];
+        protected override byte[] Buffer { get; set; } = new byte[Constants.MEM_SIZE_BYTES];
     }
 }

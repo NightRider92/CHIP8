@@ -17,7 +17,7 @@ namespace CHIP8.Memory
         /// <returns></returns>
         public virtual Array? GetClone()
         {
-            return Buffer.ToArray();
+            return this.Buffer.ToArray();
         }
 
         /// <summary>
@@ -29,9 +29,9 @@ namespace CHIP8.Memory
         /// 
         public virtual object GetValue(uint index)
         {
-            if (index >= Buffer.Length)
+            if (index >= this.Buffer.Length)
                 throw new ArgumentOutOfRangeException(nameof(index)); 
-            return Buffer[index];
+            return this.Buffer[index];
         }
 
         /// <summary>
@@ -42,9 +42,9 @@ namespace CHIP8.Memory
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         public virtual void SetValue(uint index, byte value)
         {
-            if (index >= Buffer.Length)
+            if (index >= this.Buffer.Length)
                 throw new ArgumentOutOfRangeException(nameof(index));
-            Buffer[index] = value;
+            this.Buffer[index] = value;
         }
     }
 }

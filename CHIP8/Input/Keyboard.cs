@@ -9,7 +9,7 @@ namespace CHIP8.Input
     /// </summary>
     public class Keyboard
     {
-        private bool[] buffer = new bool[16];
+        private bool[] buffer = new bool[Constants.KBD_SIZE_BYTES];
         public Keyboard()
         {
             Console.WriteLine("Keyboard has been initialized");
@@ -33,7 +33,7 @@ namespace CHIP8.Input
         {
             if (index < 0 || index >= buffer.Length)
                 throw new ArgumentOutOfRangeException();
-            return this.buffer[index]; 
+            return this.buffer[index];
         }
 
         /// <summary>

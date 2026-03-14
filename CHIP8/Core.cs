@@ -107,18 +107,33 @@ namespace CHIP8
         /// <summary>
         /// Process
         /// </summary>
-        public void Process()
+        public void ProcessCPU()
         {
             Console.SetCursorPosition(0, 0);
 
             Console.WriteLine("REG_PC: " + this.registers!.reg_PC);
             Console.WriteLine("REG_SP: " + this.registers!.reg_SP);
             Console.WriteLine("REG_I: " + this.registers!.reg_I);
-            Console.WriteLine("REG_V: " + string.Join(", ", this.registers!.reg_V)); 
+            Console.WriteLine("REG_V: " + string.Join(", ", this.registers!.reg_V));
             Console.WriteLine("STACK: " + string.Join(", ", this.registers!.stack));
 
-            this.cpu!.Process();
+            this.cpu!.ProcessCPU();
             this.captureKeyboardKeys();
+        }
+
+        /// <summary>
+        /// Process timers
+        /// </summary>
+        public void ProcessTimers()
+        {
+            this.cpu!.ProcessTimers();
+        }
+
+        /// <summary>
+        /// Process display
+        /// </summary>
+        public void ProcessDisplay()
+        {
             byte[] buffer = (byte[])this.videoMemory!.GetClone()!;
             this.display!.Draw(buffer);
         }

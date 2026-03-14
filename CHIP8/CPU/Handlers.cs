@@ -31,7 +31,7 @@ namespace CHIP8.CPU
         public Handlers(MainMemory mMem, VideoMemory vMem, Registers.Registers reg, Timers.Timers tmr, Keyboard kbd)
         {
             this.mainMemory = mMem;
-            if (this.mainMemory == null) throw new ArgumentNullException(nameof(this.mainMemory)); 
+            if (this.mainMemory == null) throw new ArgumentNullException(nameof(this.mainMemory));
 
             this.videoMemory = vMem;
             if (this.videoMemory == null) throw new ArgumentNullException(nameof(this.videoMemory));
@@ -304,31 +304,39 @@ namespace CHIP8.CPU
 
             for (int row = 0; row < n; row++)
             {
-                // Position of sprite in main memory
-                byte sb = (byte)this.mainMemory.GetValue((uint)(I + row));
-
-                // Extract bits from byte (sprite), MSB first
-                for (int bit = 0; bit < 8; bit++)
+                try
                 {
-                    int pixel = (byte)(sb >> (7 - bit)) & 1;
-                    if (pixel == 0) continue;
+                    // Position of sprite in main memory
+                    byte sb = (byte)this.mainMemory.GetValue((uint)(I + row));
 
-                    int px = (vx + bit) % Constants.SCREEN_W;
-                    int py = (vy + row) % Constants.SCREEN_H;
+                    // Extract bits from byte (sprite), MSB first
+                    for (int bit = 0; bit < 8; bit++)
+                    {
+                        try
+                        {
+                            int pixel = (byte)(sb >> (7 - bit)) & 1;
+                            if (pixel == 0) continue;
 
-                    // Video memory index
-                    int idx = py * Constants.SCREEN_W + px;
+                            int px = (vx + bit) % Constants.SCREEN_W;
+                            int py = (vy + row) % Constants.SCREEN_H;
 
-                    if ((byte)this.videoMemory.GetValue((uint)(idx)) == 1)
-                        this.registers.reg_V[0xF] = 1; // Collision detected
+                            // Video memory index
+                            int idx = py * Constants.SCREEN_W + px;
 
-                    // XOR write to video memory
-                    byte oldPixel = (byte)this.videoMemory.GetValue((uint)idx);
-                    byte newPixel = (byte)(oldPixel ^ 1);
-                    this.videoMemory.SetValue((uint)idx, newPixel);
+                            if ((byte)this.videoMemory.GetValue((uint)(idx)) == 1)
+                                this.registers.reg_V[0xF] = 1; // Collision detected
+
+                            // XOR write to video memory
+                            byte oldPixel = (byte)this.videoMemory.GetValue((uint)idx);
+                            byte newPixel = (byte)(oldPixel ^ 1);
+                            this.videoMemory.SetValue((uint)idx, newPixel);
+                        }
+                        catch (Exception ex) { Console.WriteLine($"Exception thrown: {ex.Message}"); }
+                    }
                 }
+                catch (Exception ex) { Console.WriteLine($"Exception thrown: {ex.Message}"); }
             }
-            this.registers.reg_PC += 2;
+            this.registers.reg_PC += 2; // Increase program counter by 2 after drawing  
         }
 
         // EX??

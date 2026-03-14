@@ -15,11 +15,21 @@ namespace CHIP8
 
         public const short SCREEN_W = 64;
         public const short SCREEN_H = 32;
-		public const short SCREEN_SCALE = 10;
+        public const short SCREEN_SCALE = 10;
+        public const short MEM_SIZE_BYTES = 4096;
+        public const short KBD_SIZE_BYTES = 16;
 
-        public static readonly byte[] fontset = new byte[Constants.FONTSET_SIZE] 
-		{
-			0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
+        public const short STACK_SIZE_BYTES = 16;
+        public const short REGV_SIZE_BYTES = 16;
+
+        public const double CPU_TIMING_MS = 1.42f;            // ~ 700Hz
+        public const double TIMER_TIMING_MS = 16.67f;        // ~ 60Hz
+        public const double DISPLAY_TIMING_MS = 16.67f;	    // ~ 60Hz
+        public const int GRAPHICS_FPS = Int32.MaxValue;
+
+        public static readonly byte[] fontset = new byte[Constants.FONTSET_SIZE]
+        {
+            0xF0, 0x90, 0x90, 0x90, 0xF0, // 0
 			0x20, 0x60, 0x20, 0x20, 0x70, // 1
 			0xF0, 0x10, 0xF0, 0x80, 0xF0, // 2
 			0xF0, 0x10, 0xF0, 0x10, 0xF0, // 3

@@ -17,7 +17,7 @@ namespace CHIP8.CPU
         public Instruction(ushort mask, ushort pattern, Action<ushort> handler)
         {
             this.Mask = mask;
-            this.Pattern = pattern; 
+            this.Pattern = pattern;
             this.Handler = handler;
         }
 

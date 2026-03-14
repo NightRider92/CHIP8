@@ -14,7 +14,7 @@ namespace CHIP8.Graphics
         {
             Console.WriteLine("Display has been initialized");
             Raylib.InitWindow(Constants.SCREEN_W * Constants.SCREEN_SCALE, Constants.SCREEN_H * Constants.SCREEN_SCALE, "CHIP8");
-            Raylib.SetTargetFPS(1000); 
+            Raylib.SetTargetFPS(Constants.GRAPHICS_FPS);
         }
 
         /// <summary>
@@ -30,18 +30,33 @@ namespace CHIP8.Graphics
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Color.Black);
 
+            Pixel pixel = new Pixel();
+            int shaderOffsetX = 2;
+
             for (int y = 0; y < Constants.SCREEN_H; y++)
             {
                 for (int x = 0; x < Constants.SCREEN_W; x++)
                 {
-                    if (videoBuffer[y * Constants.SCREEN_W + x] == 1)
+                    pixel.Value = videoBuffer[y * Constants.SCREEN_W + x];
+                    pixel.Index = y * Constants.SCREEN_W + x;
+
+                    if (pixel.Value == 1)
                     {
+                        // Pixel shader
                         Raylib.DrawRectangle(
-                            x * Constants.SCREEN_SCALE,
-                            y * Constants.SCREEN_SCALE,
-                            Constants.SCREEN_SCALE,
-                            Constants.SCREEN_SCALE,
-                            Color.Green
+                             (x * Constants.SCREEN_SCALE) + shaderOffsetX,
+                             (y * Constants.SCREEN_SCALE) + shaderOffsetX,
+                             Constants.SCREEN_SCALE,
+                             Constants.SCREEN_SCALE,
+                             Color.DarkGreen);
+
+                        // Draw pixel
+                        Raylib.DrawRectangle(
+                             x * Constants.SCREEN_SCALE,
+                             y * Constants.SCREEN_SCALE,
+                             Constants.SCREEN_SCALE,
+                             Constants.SCREEN_SCALE,
+                             Color.Green
                         );
                     }
                 }

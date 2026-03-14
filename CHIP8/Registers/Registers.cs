@@ -15,14 +15,14 @@ namespace CHIP8.Registers
         }
 
         // General purpose registers
-        public byte[] reg_V { get; set; } = new byte[16];
+        public byte[] reg_V { get; set; } = new byte[Constants.REGV_SIZE_BYTES];
 
         // Special purpose registers
-        public ushort reg_I { get; set; } = 0x0; 
+        public ushort reg_I { get; set; } = 0x0;
         public ushort reg_PC { get; set; } = 0x0;
         public ushort reg_SP { get; set; } = 0x0;
 
         // Stack
-        public ushort[] stack { get; set; } = new ushort[16];
+        public ushort[] stack { get; set; } = new ushort[Constants.STACK_SIZE_BYTES];
     }
 }
