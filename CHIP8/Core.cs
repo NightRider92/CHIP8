@@ -1,4 +1,4 @@
-﻿using CHIP8.CPU;
+using CHIP8.CPU;
 using CHIP8.Graphics;
 using CHIP8.Input;
 using CHIP8.Memory;

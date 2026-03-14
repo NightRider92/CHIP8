@@ -1,4 +1,4 @@
-﻿using CHIP8.Input;
+using CHIP8.Input;
 using CHIP8.Memory;
 using System;
 using System.Collections.Generic;

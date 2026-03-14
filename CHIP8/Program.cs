@@ -1,4 +1,4 @@
-﻿
+
 using CHIP8;
 using CHIP8.CPU;
 using System.Diagnostics;
