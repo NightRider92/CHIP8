@@ -20,8 +20,9 @@ namespace CHIP8
         private string romFile = string.Empty;
 
         private readonly ROM.ROM? rom = null;
-        private readonly Keyboard? keyboard = null;
+        private readonly byte[]? romBytes = null;
 
+        private readonly Keyboard? keyboard = null;
         private readonly Registers.Registers? registers = null;
         private readonly Timers.Timers? timers = null;
 
@@ -57,14 +58,14 @@ namespace CHIP8
                 this.mainMemory.SetValue(index, value);
             }
 
-            byte[]? romfile = rom.Load(this.romFile);
-            if (romfile == null) throw new FileLoadException();
+            this.romBytes = rom.Load(this.romFile);
+            if (romBytes == null) throw new FileLoadException();
 
             // Load ROM to main memory
-            for (int i = 0; i < romfile.Length; i++)
+            for (int i = 0; i < romBytes.Length; i++)
             {
                 uint index = (uint)(Constants.START_ADDR + i);
-                byte value = romfile[i];
+                byte value = romBytes[i];
 
                 // Write into the main memory
                 mainMemory.SetValue(index, value);
