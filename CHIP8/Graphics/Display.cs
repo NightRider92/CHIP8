@@ -10,10 +10,16 @@ namespace CHIP8.Graphics
     /// </summary>
     public class Display
     {
-        public Display()
+        private readonly string DisplayName;
+        public Display(string displayName)
         {
             Console.WriteLine("Display has been initialized");
-            Raylib.InitWindow(Constants.SCREEN_W * Constants.SCREEN_SCALE, Constants.SCREEN_H * Constants.SCREEN_SCALE, "CHIP8");
+
+            this.DisplayName = displayName;
+            if(string.IsNullOrEmpty(DisplayName)) 
+                throw new ArgumentNullException(nameof(displayName));   
+
+            Raylib.InitWindow(Constants.SCREEN_W * Constants.SCREEN_SCALE, Constants.SCREEN_H * Constants.SCREEN_SCALE, this.DisplayName);
             Raylib.SetTargetFPS(Constants.GRAPHICS_FPS);
         }
 

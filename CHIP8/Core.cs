@@ -74,7 +74,7 @@ namespace CHIP8
             this.cpu = new CPU.CPU(this.mainMemory, this.videoMemory, this.registers, this.timers, this.keyboard);
 
             // Initialize display
-            this.display = new Display();
+            this.display = new Display("CHIP8 main display");
             Console.WriteLine("System has been initialized");
         }
 
